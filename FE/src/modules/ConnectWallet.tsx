@@ -1,13 +1,13 @@
 "use client";
 
 import { useAccount, useConnect, useDisconnect } from "wagmi";
-import { metaMask } from "wagmi/connectors";
+import { injected } from "wagmi/connectors";
 
 export default function ConnectButton() {
   const { address, chain, isConnected } = useAccount();
   const { connect, error, isPending } = useConnect();
   const { disconnect } = useDisconnect();
-  const metaMaskConnector = metaMask();
+  const metaMaskConnector = injected({ target: "metaMask" });
 
   if (isConnected) {
     return (
